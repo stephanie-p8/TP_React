@@ -10,17 +10,16 @@ export  const styles = StyleSheet.create({
       paddingTop: 30,
     },
     logo:{
-      flex: 1,
       alignItems: 'center',
-      justifyContent: 'flex-center',
+      justifyContent: 'center',
       width:100,
       height: 100,
     },
     label: {
       fontSize: 50,
       textAlign: 'center',
-      color: ' #000000',
-      fontWeight: 'bolder',
+      color: '#000000',
+      fontWeight: 'bold',
     },
     timer: {
       fontSize: 90,
@@ -45,8 +44,7 @@ export  const styles = StyleSheet.create({
       padding: 6,
       textAlign: 'center',
       marginLeft: 5,
-      maxWidth: 70,
-      minWidth: 30
+      minWidth: 70
     },
     buttonContainer:{
       flexDirection: 'row',
@@ -88,7 +86,7 @@ export  const styles = StyleSheet.create({
     buttonLabel:{
       color:'#ffffff',
       fontSize: 25,
-      fontWeight: '550'
+      fontWeight: 'bold'
     }
   });
   

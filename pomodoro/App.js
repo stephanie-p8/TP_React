@@ -44,7 +44,7 @@ export default class App extends React.Component {
     if(isNaN(hours) && isNaN(minutes) && isNaN(seconds)){
       return `00:00:00`
     }else{
-      return `${hours} : ${minutes} : ${seconds}`
+      return `${hours}:${minutes}:${seconds}`
     }
 
     
