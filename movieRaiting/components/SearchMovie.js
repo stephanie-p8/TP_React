@@ -25,7 +25,7 @@ const formatResponse = (item) => {
 const searchMovies = async (query) => {
   if (query == "") return;
   const response = await fetch(
-    `http://www.omdbapi.com/?t=${query}&apikey=ea178c90`
+    `http://www.omdbapi.com/?t=${query}&plot=full&apikey=ea178c90`
   );
   const results  = await response.json();
   var tab = [];
@@ -63,9 +63,7 @@ const SearchMovie = () => {
       <FlatList
         data={listResults}
         renderItem={({ item }) => (
-          <TouchableOpacity>
             <ListMovieItems item={item} />
-          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}
       />

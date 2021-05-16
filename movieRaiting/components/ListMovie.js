@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {StatusBar} from 'expo-status-bar';
 import { FlatList, StyleSheet, Text, View, TextInput,TouchableOpacity, SafeAreaView } from 'react-native';
 import ListMovieItems from './ListMovieItems';
 
@@ -41,7 +40,7 @@ const getMovies = async () =>{
     return list;
 }
 
-const ListMovie = ({listMovie}) =>{
+const ListMovie = ({listMovie,navigation}) =>{
 
     const [movieList,setMovieList] = useState([]);
     const [input, setInput] = useState("");
@@ -72,14 +71,18 @@ const ListMovie = ({listMovie}) =>{
         if(input==""){
             getMovies().then(res => setMovieList(res))
             
+            
         }
-        listMovie = movieList;
+        
         const timeout = setTimeout(handleSubmit, 1000);
         return () => {
             clearTimeout(timeout);
           };
 
     },[input]);
+
+    listMovie = movieList;
+    console.log(movieList)
 
     if(input==""){
         return(
@@ -93,8 +96,8 @@ const ListMovie = ({listMovie}) =>{
                 />
                 <SafeAreaView style={styles.container}>
                     <FlatList
-                        data = {movieList}
-                        renderItem = {({item}) => <ListMovieItems item={item}/>}
+                        data = {listMovie}
+                        renderItem = {({item}) => <ListMovieItems navigation={navigation} item={item}/>}
                         keyExtractor={(item) => item.id}
                     />
                 </SafeAreaView>
@@ -115,9 +118,7 @@ const ListMovie = ({listMovie}) =>{
                 <FlatList
                     data={listResults}
                     renderItem={({ item }) => (
-                    <TouchableOpacity>
-                        <ListMovieItems item={item} />
-                    </TouchableOpacity>
+                        <ListMovieItems navigation={navigation} item={item} />
                     )}
                     keyExtractor={(item) => item.id}
                 />

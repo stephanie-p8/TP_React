@@ -12,42 +12,23 @@ const Form = ({onAdd}) => {
     const [date, setDate] = useState('');
     const [note, setNote] = useState('');
     const [genre, setGenre] = useState('');
-    const [isValid, setIsValid] = useState(false);
-
-    const handleSubmit = () => {
-        var data = {
-            id: id,
-            title: title,
-            plot: plot,
-            image: image,
-            genre: genre,
-            date: date,
-            note: note
-        }
-
-        return data;
-    }
+    const [resultat,setResultat] = useState([]);
+    //const [isValid, setIsValid] = useState(false);
 
     const item =  {
         id: id,
         title: title,
-        plot: plot,
-        image: image,
+        resume: plot,
+        img: image,
         genre: genre,
         date: date,
         note: note
     }
 
-    useEffect(() =>{
-        if (id!=null && title!='' & plot!='' && image!='' && date!='' && note!='') {
-            setIsValid(true)
-        }
-        else {
-            setIsValid(false)
-        }
-    },[isValid])
-
-
+    useEffect(()=>{
+        setResultat([(prev)=>{[...prev,item]}]);
+    },[resultat])
+    console.log(resultat);
     return (
         <View style={{flex:1}}>
             <Text style={styles.header}>Add a new movie</Text>
@@ -56,7 +37,7 @@ const Form = ({onAdd}) => {
                 <TextInput
                     style={styles.input}
                     value={id}
-                    onChangeText={(text)=>setId(text)}
+                    onChangeText={setId}
                     placeholder="Movie id"
                     keyboardType="numeric"
                 />
@@ -64,7 +45,7 @@ const Form = ({onAdd}) => {
                 <TextInput
                     style={styles.input}
                     value={title}
-                    onChangeText={(text) =>setTitle(text)}
+                    onChangeText={setTitle}
                     placeholder="Movie Title"
                 />
                 <Text style={styles.label}>Plot</Text>
@@ -80,14 +61,14 @@ const Form = ({onAdd}) => {
                 <TextInput
                     style={styles.input}
                     value={genre}
-                    onChangeText={(text) =>setGenre(text)}
+                    onChangeText={setGenre}
                     placeholder="Movie genre"
                 />
                 <Text style={styles.label}>Image link</Text>
                 <TextInput
                     style={styles.input}
                     value={image}
-                    onChangeText={(text)=>setImage(text)}
+                    onChangeText={setImage}
                     placeholder="Movie poster"
                 />
                 <Text style={styles.label}>Date</Text>
@@ -95,13 +76,13 @@ const Form = ({onAdd}) => {
                     style={styles.input}
                     value={date}
                     placeholder={"06 Jan 2017"}
-                    onChangeText={(text)=>setDate(text)}
+                    onChangeText={setDate}
                 />
                 <Text style={styles.label}>Note</Text>
                 <TextInput
                     style={styles.input}
                     value={note}
-                    onChangeText={(text)=>setNote(text)}
+                    onChangeText={setNote}
                     placeholder="Movie note"
                     keyboardType='decimal-pad'
                 />
@@ -109,8 +90,9 @@ const Form = ({onAdd}) => {
             <View style={styles.buttonContainer}>
                 <Button
                     style={styles.button}
+                   
                     title='Submit'
-                    onPress={()=>{onAdd(item)}}/>
+                    onPress={()=>{onAdd(resultat)}}/>
                        
             </View>
         </View>

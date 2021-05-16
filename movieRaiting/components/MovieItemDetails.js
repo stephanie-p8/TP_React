@@ -1,30 +1,38 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 
-
-const MovieItemDetails = ({item}) =>{
+const MovieItemDetails = ({route}) =>{
+    const {props} = route.params;
     return(
         <View style={styles.container}>
-            <Image style={styles.image} source={{uri: item.img}}/>
-            <View style={styles.info}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.date}>{item.date}</Text>
-                <Text style={styles.details}>{item.genre}</Text>
-                <Text style={styles.details}>Plot: {item.resume}</Text>
-                <Text style={styles.note}>Note : {item.note}</Text>
-            </View>
+            <ScrollView style={{paddingLeft: 250}}>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.image} source={{uri: props.img}}/>
+                </View>
+                <View style={styles.info}>
+                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.date}>{props.date}</Text>
+                    <Text style={styles.details}>Genre: {props.genre}</Text>
+                    <View style={styles.detailsContainer}>
+                        <Text style={styles.details}>Plot: {props.resume}</Text>
+                    </View>
+                    <Text style={styles.note}>Note : {props.note}</Text>
+                </View>
+            </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: { flexDirection: "row",flex:1, alignItems:'center', justifyContent:'center'},
-    image: { width: 120, height: 180, margin: 10, borderRadius: 3 },
-    info: { flex: 3, justifyContent: "center" },
+    container: { flex:1, alignItems:'center', justifyContent:'center'},
+    imageContainer:{justifyContent:'center',alignContent:'center', flexDirection:'row'},
+    image: { width: 240, height: 380, margin: 10, borderRadius: 3},
+    info: { flex: 3, justifyContent: "center", alignItems:'center' },
     title: { fontSize: 20, fontWeight:'bold' },
     date:{ fontsize:16},
-    details: { color: "gray", padding:2, fontSize:14 },
-    note: {fontsize:18, fontWeight:'bold', padding:3}
+    detailsContainer:{width:450},
+    details: { color: "gray", padding:3, fontSize:14 },
+    note: {fontsize:18, fontWeight:'bold', padding:5}
 });
 
 export default MovieItemDetails;

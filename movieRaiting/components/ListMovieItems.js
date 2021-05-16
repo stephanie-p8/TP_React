@@ -1,12 +1,14 @@
 import React from 'react';
 import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
-import MovieItemDetails from './MovieItemDetails';
 
-const ListMovieItems = ({item}) => {
+
+const ListMovieItems = ({navigation, item}) => {
+    
     return(
-        <TouchableOpacity style={styles.container} onPress={(props) => {
-            return <MovieItemDetails  {...props} item={item}/>;
-          }}>
+        <TouchableOpacity style={styles.container} onPress={() => 
+            //<MovieItemDetails props={item}/>
+            navigation.navigate("MovieItemDetails",{props: item})
+        }>
             <Image style={styles.image} source={{uri: item.img}}/>
             <View style={styles.info}>
                 <Text style={styles.title}>{item.title}</Text>
