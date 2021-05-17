@@ -23,12 +23,12 @@ const ListMovieItems = ({navigation, item}) => {
 
 const styles = StyleSheet.create({
     container: { flexDirection: "row"},
-    image: { width: 120, height: 180, margin: 10, borderRadius: 3 },
+    image: { width: 120, height: 180, margin: 10, borderRadius: 3,resizeMode:"contain" },
     info: { flex: 3, justifyContent: "center" },
     title: { fontSize: 20, fontWeight:'bold' },
-    date:{ fontsize:16},
+    date:{ fontSize:16},
     details: { color: "gray", padding:2, fontSize:14 },
-    note: {fontsize:18, fontWeight:'bold', padding:3}
+    note: {fontSize:18, fontWeight:'bold', padding:3}
 });
 
 export default ListMovieItems;

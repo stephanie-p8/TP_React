@@ -28,65 +28,67 @@ const Form = ({onAdd}) => {
     useEffect(()=>{
         setResultat([(prev)=>{[...prev,item]}]);
     },[resultat])
-    console.log(resultat);
+   
     return (
         <View style={{flex:1}}>
             <Text style={styles.header}>Add a new movie</Text>
-            <ScrollView style={{marginLeft: 150}}>
-                <Text style={styles.label}>Movie id</Text>
-                <TextInput
-                    style={styles.input}
-                    value={id}
-                    onChangeText={setId}
-                    placeholder="Movie id"
-                    keyboardType="numeric"
-                />
-                <Text style={styles.label}>Movie Title</Text>
-                <TextInput
-                    style={styles.input}
-                    value={title}
-                    onChangeText={setTitle}
-                    placeholder="Movie Title"
-                />
-                <Text style={styles.label}>Plot</Text>
-                <TextInput
-                    style={styles.input}
-                    value={plot}
-                    multiline={true}
-                    numberOfLines={30}
-                    onChangeText={(text)=>setPlot(text)}
-                    placeholder="Movie plot"
-                />
-                <Text style={styles.label}>Movie genre</Text>
-                <TextInput
-                    style={styles.input}
-                    value={genre}
-                    onChangeText={setGenre}
-                    placeholder="Movie genre"
-                />
-                <Text style={styles.label}>Image link</Text>
-                <TextInput
-                    style={styles.input}
-                    value={image}
-                    onChangeText={setImage}
-                    placeholder="Movie poster"
-                />
-                <Text style={styles.label}>Date</Text>
-                <TextInput
-                    style={styles.input}
-                    value={date}
-                    placeholder={"06 Jan 2017"}
-                    onChangeText={setDate}
-                />
-                <Text style={styles.label}>Note</Text>
-                <TextInput
-                    style={styles.input}
-                    value={note}
-                    onChangeText={setNote}
-                    placeholder="Movie note"
-                    keyboardType='decimal-pad'
-                />
-            </ScrollView>
+            <View style={styles.container}>
+                <ScrollView style={{flex:1}}>
+                    <Text style={styles.label}>Movie id</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={id}
+                        onChangeText={setId}
+                        placeholder="Movie id"
+                        keyboardType="numeric"
+                    />
+                    <Text style={styles.label}>Movie Title</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={title}
+                        onChangeText={setTitle}
+                        placeholder="Movie Title"
+                    />
+                    <Text style={styles.label}>Plot</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={plot}
+                        multiline={true}
+                        numberOfLines={30}
+                        onChangeText={(text)=>setPlot(text)}
+                        placeholder="Movie plot"
+                    />
+                    <Text style={styles.label}>Movie genre</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={genre}
+                        onChangeText={setGenre}
+                        placeholder="Movie genre"
+                    />
+                    <Text style={styles.label}>Image link</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={image}
+                        onChangeText={setImage}
+                        placeholder="Movie poster"
+                    />
+                    <Text style={styles.label}>Date</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={date}
+                        placeholder={"06 Jan 2017"}
+                        onChangeText={setDate}
+                    />
+                    <Text style={styles.label}>Note</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={note}
+                        onChangeText={setNote}
+                        placeholder="Movie note"
+                        keyboardType='decimal-pad'
+                    />
+                </ScrollView>
+            </View>
             <View style={styles.buttonContainer}>
                 <Button
                     style={styles.button}
@@ -101,7 +103,8 @@ const Form = ({onAdd}) => {
 
 const styles = StyleSheet.create({
     container: {
-        //alignItems: 'center',
+        flex:1,
+        alignItems: 'center',
         justifyContent: 'center',
         fontFamily: 'Verdana',
     },

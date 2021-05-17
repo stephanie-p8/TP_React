@@ -5,7 +5,7 @@ const MovieItemDetails = ({route}) =>{
     const {props} = route.params;
     return(
         <View style={styles.container}>
-            <ScrollView style={{paddingLeft: 250}}>
+            <ScrollView style={{paddingLeft: 10,flex:1}}>
                 <View style={styles.imageContainer}>
                     <Image style={styles.image} source={{uri: props.img}}/>
                 </View>
@@ -24,15 +24,15 @@ const MovieItemDetails = ({route}) =>{
 }
 
 const styles = StyleSheet.create({
-    container: { flex:1, alignItems:'center', justifyContent:'center'},
-    imageContainer:{justifyContent:'center',alignContent:'center', flexDirection:'row'},
+    container: { flex:1, alignItems:'center', justifyContent:'center',marginTop:15},
+    imageContainer:{justifyContent:'center',alignContent:'center', flexDirection:'row',marginTop:15},
     image: { width: 240, height: 380, margin: 10, borderRadius: 3},
-    info: { flex: 3, justifyContent: "center", alignItems:'center' },
+    info: { justifyContent: "center", alignItems:'center' },
     title: { fontSize: 20, fontWeight:'bold' },
-    date:{ fontsize:16},
-    detailsContainer:{width:450},
+    date:{ fontSize:16},
+    detailsContainer:{width:400},
     details: { color: "gray", padding:3, fontSize:14 },
-    note: {fontsize:18, fontWeight:'bold', padding:5}
+    note: {fontSize:18, fontWeight:'bold', padding:5}
 });
 
 export default MovieItemDetails;
